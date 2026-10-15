@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yoseph Alemayehu — Motion Designer &amp; Video Editor</title>
+<meta name="description" content="Yoseph Alemayehu — motion designer and video editor. Motion graphics, product-focused animation, and commercial-style edits.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* palette sampled from cloud.jpg */
+    --bg:#1C1233;
+    --surface:#2A1A4E;
+    --surface-2:#35215F;
+    --border:rgba(255,255,255,.10);
+    --border-hi:rgba(255,255,255,.24);
+    --text:#FFFBFF;
+    --muted:rgba(255,251,255,.74);
+    --faint:rgba(255,251,255,.52);
+    --accent:#F7B9E0;
+    --accent-hi:#FFD0EC;
+    --accent-text:#1C1233;
+    --violet:#6B459A;
+    --violet-deep:#59358D;
+    --pink:#FEB5E0;
+    --serif:"IBM Plex Serif",Georgia,serif;
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --maxw:1200px;
+    --r-card:12px;
+    --r-hero:24px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+  img,video{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  [hidden]{display:none !important}
+
+  h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
+  h1{font-weight:500;letter-spacing:-.036em;line-height:1.1}
+  h2{letter-spacing:-.02em;line-height:1.25}
+  p{margin:0}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:var(--mono);font-size:.75rem;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+    display:block;margin-bottom:20px;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    background:var(--accent);color:var(--accent-text);
+    border:1px solid transparent;
+    border-radius:8px;padding:13px 26px;
+    font-family:var(--sans);font-size:1.05rem;font-weight:600;
+    cursor:pointer;transition:background .18s ease,transform .18s ease,box-shadow .18s ease;
+  }
+  .btn:hover{background:var(--accent-hi);transform:translateY(-1px);
+    box-shadow:0 8px 26px rgba(254,181,224,.28)}
+  .btn-ghost{background:transparent;border-color:var(--border-hi);color:var(--text)}
+  .btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.36);
+    box-shadow:none}
+  .arrow{transition:transform .2s ease}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(28,18,51,.78);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:600;font-size:1.05rem;letter-spacing:-.01em}
+  .logo-mark{
+    width:30px;height:30px;border-radius:8px;flex:none;
+    background:linear-gradient(135deg,var(--pink),var(--violet));
+    display:grid;place-items:center;font-family:var(--mono);
+    font-size:.8rem;font-weight:500;color:#1C1233;
+  }
+  .nav-links{display:flex;align-items:center;gap:34px}
+  .nav-links a{font-size:.95rem;color:var(--muted);transition:color .15s ease}
+  .nav-links a:hover{color:var(--text)}
+  .nav-links a.nav-cta{color:var(--text)}
+  .nav-cta{padding:9px 18px;font-size:.95rem}
+  .menu-btn{display:none;background:none;border:0;color:var(--text);cursor:pointer;padding:8px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:24px 24px 0}
+  .hero-card{
+    position:relative;overflow:hidden;
+    border:1px solid var(--border);border-radius:var(--r-hero);
+    padding:120px 32px 150px;text-align:center;
+    background-image:
+      linear-gradient(180deg,rgba(28,18,51,.62) 0%,rgba(28,18,51,.34) 45%,rgba(28,18,51,.72) 100%),
+      linear-gradient(160deg,rgba(107,69,154,.55),rgba(254,181,224,.18)),
+      url("cloud.jpg");
+    background-size:cover;
+    background-position:center 38%;
+  }
+  .hero-card::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      radial-gradient(1.4px 1.4px at 18% 24%, rgba(255,255,255,.85), transparent),
+      radial-gradient(1.2px 1.2px at 72% 18%, rgba(255,255,255,.7), transparent),
+      radial-gradient(1.6px 1.6px at 42% 62%, rgba(255,255,255,.6), transparent),
+      radial-gradient(1.2px 1.2px at 88% 55%, rgba(255,255,255,.75), transparent),
+      radial-gradient(1.3px 1.3px at 8% 72%, rgba(255,255,255,.55), transparent),
+      radial-gradient(1.1px 1.1px at 62% 82%, rgba(255,255,255,.65), transparent),
+      radial-gradient(1.5px 1.5px at 33% 38%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1.2px 1.2px at 94% 78%, rgba(255,255,255,.6), transparent),
+      radial-gradient(1.3px 1.3px at 25% 88%, rgba(255,255,255,.45), transparent),
+      radial-gradient(1.1px 1.1px at 55% 12%, rgba(255,255,255,.55), transparent);
+    background-size:600px 600px;
+    opacity:.9;
+  }
+  .hero-card > *{position:relative;z-index:1}
+  .hero h1{
+    font-size:clamp(2.6rem,6.2vw,4.4rem);
+    margin:0 auto 26px;max-width:15ch;
+    text-shadow:0 2px 30px rgba(28,18,51,.5);
+  }
+  .hero h1 em{font-style:italic;color:var(--pink)}
+  .hero-sub{
+    font-size:clamp(1.05rem,2vw,1.35rem);color:#F2E9FF;
+    max-width:54ch;margin:0 auto 40px;
+    text-shadow:0 1px 16px rgba(28,18,51,.7);
+  }
+  .hero .eyebrow{color:rgba(255,251,255,.82);text-shadow:0 1px 10px rgba(28,18,51,.8)}
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- section rhythm ---------- */
+  section{padding:110px 0}
+  .sec-head{max-width:660px;margin-bottom:60px}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.5rem);margin-bottom:18px}
+  .sec-head p{color:var(--muted);font-size:1.1rem}
+
+  /* ---------- showreel (only renders once showreel.mp4 exists) ---------- */
+  .showreel{padding-top:0}
+  .showreel[hidden]{display:none}
+  .reel{
+    position:relative;aspect-ratio:16/9;overflow:hidden;
+    border:1px solid var(--border);border-radius:var(--r-card);
+    background:linear-gradient(140deg,#2A1A4E,#1C1233 60%);
+  }
+  .reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .reel .play{
+    position:absolute;inset:0;margin:auto;width:88px;height:88px;border-radius:50%;
+    background:rgba(28,18,51,.45);border:1px solid rgba(255,255,255,.3);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    cursor:pointer;z-index:2;transition:transform .2s ease,background .2s ease;
+  }
+  .reel .play::before{
+    content:"";position:absolute;inset:0;margin:auto;width:0;height:0;left:4px;
+    border-left:20px solid #fff;border-top:13px solid transparent;border-bottom:13px solid transparent;
+  }
+  .reel .play:hover{transform:scale(1.07);background:rgba(28,18,51,.6)}
+
+  /* ---------- work ---------- */
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .work-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--r-card);overflow:hidden;
+    transition:border-color .25s ease,transform .25s ease;
+    display:block;
+  }
+  .work-card:hover{border-color:var(--border-hi);transform:translateY(-3px)}
+  .thumb{
+    aspect-ratio:16/9;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,var(--surface-2),#241647);
+  }
+  .thumb img,.thumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .thumb::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.32));
+  }
+  .thumb-tag{
+    position:absolute;top:16px;left:16px;z-index:2;
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+    text-transform:uppercase;padding:5px 10px;border-radius:5px;
+    background:rgba(28,18,51,.72);border:1px solid var(--border);
+    backdrop-filter:blur(6px);
+  }
+  .work-body{padding:24px}
+  .work-body h3{font-size:1.35rem;letter-spacing:-.01em;margin-bottom:8px}
+  .work-body p{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+    color:var(--faint);border:1px solid var(--border);
+    border-radius:5px;padding:4px 9px;
+  }
+  .tag-spec{color:var(--pink);border-color:rgba(254,181,224,.42)}
+
+  /* empty state — shown only while no finished work exists */
+  .empty{
+    border:1px dashed var(--border-hi);border-radius:var(--r-card);
+    padding:72px 32px;text-align:center;
+    background:linear-gradient(180deg,rgba(42,26,78,.5),rgba(42,26,78,.2));
+  }
+  .empty h3{font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:14px}
+  .empty p{color:var(--muted);max-width:44ch;margin:0 auto}
+  .empty .eyebrow{margin-bottom:16px}
+
+  /* ---------- services ---------- */
+  .cap-list{border-top:1px solid var(--border)}
+  .cap{
+    display:grid;grid-template-columns:56px 1fr;gap:24px;
+    padding:34px 0;border-bottom:1px solid var(--border);
+    align-items:start;
+  }
+  .cap-icon{
+    width:44px;height:44px;border-radius:10px;
+    background:rgba(254,181,224,.14);border:1px solid rgba(254,181,224,.34);
+    display:grid;place-items:center;color:var(--pink);
+  }
+  .cap h3{font-family:var(--sans);font-size:1.15rem;font-weight:600;letter-spacing:-.01em;margin-bottom:7px}
+  .cap p{color:var(--muted);font-size:1rem;max-width:60ch}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:56px;align-items:start}
+  .about-grid:not(:has(.about-portrait)){grid-template-columns:1fr;max-width:760px}
+  .about-body p{font-size:1.12rem;color:var(--muted);margin-bottom:32px}
+  .about-body p:last-of-type{margin-bottom:0}
+  .tools-title{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--faint);margin-bottom:16px}
+  .tools{display:flex;flex-wrap:wrap;gap:9px;list-style:none;padding:0;margin:0}
+  .tools li{
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;
+    border:1px solid var(--border);border-radius:6px;
+    padding:7px 12px;color:var(--muted);background:rgba(42,26,78,.5);
+  }
+  .about-portrait{margin:0}
+  .about-portrait[hidden]{display:none}
+  .about-portrait img{
+    width:100%;border-radius:var(--r-card);
+    border:1px solid var(--border);object-fit:cover;aspect-ratio:4/5;
+  }
+  .about-meta{
+    display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--faint);
+  }
+  .about-meta .dot{color:var(--pink)}
+
+  /* ---------- cta ---------- */
+  .cta{text-align:center}
+  .cta-card{
+    border:1px solid var(--border);border-radius:var(--r-hero);
+    padding:90px 32px;
+    background:
+      radial-gradient(ellipse 55% 60% at 50% 0%, rgba(254,181,224,.30), transparent 65%),
+      radial-gradient(ellipse 45% 50% at 80% 100%, rgba(107,69,154,.5), transparent 65%),
+      var(--surface);
+  }
+  .cta h2{font-size:clamp(2rem,4.4vw,3rem);margin-bottom:20px;max-width:18ch;margin-inline:auto}
+  .cta p{color:var(--muted);font-size:1.1rem;max-width:46ch;margin:0 auto 36px}
+  .cta .avail{
+    display:inline-block;font-family:var(--mono);font-size:.72rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--pink);
+    border:1px solid rgba(254,181,224,.4);border-radius:100px;
+    padding:6px 16px;margin-bottom:26px;
+  }
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--border);padding:56px 0 48px}
+  .foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
+  .foot-links{display:flex;gap:28px;flex-wrap:wrap}
+  .foot-links a{font-size:.95rem;color:var(--muted);transition:color .15s ease}
+  .foot-links a:hover{color:var(--text)}
+  .foot-note{font-family:var(--mono);font-size:.78rem;color:var(--faint);margin-top:34px}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);
+    transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .hero-card{padding:84px 22px 100px}
+    section{padding:78px 0}
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .about-grid:not(:has(.about-portrait)){grid-template-columns:1fr}
+    .about-portrait{max-width:340px}
+  }
+  @media (max-width:680px){
+    .grid-2{grid-template-columns:1fr}
+    .cap{grid-template-columns:1fr;gap:14px}
+    .foot{flex-direction:column}
+    .empty{padding:52px 22px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <span class="logo-mark">YA</span>
+      <span>Yoseph Alemayehu</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn btn-ghost nav-cta">Get in touch</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <span class="eyebrow">Motion Designer &amp; Video Editor</span>
+      <h1>Making ideas <em>move</em>.</h1>
+      <p class="hero-sub">Motion graphics, product-focused animation, and commercial-style edits — turning ideas into clear, engaging visual stories.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn">View work <span class="arrow">→</span></a>
+        <a href="#reel" class="btn btn-ghost" id="reel-link" hidden>Watch showreel</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWREEL — hidden until showreel.mp4 is added -->
+  <section class="showreel" id="reel" hidden>
+    <div class="wrap">
+      <div class="reel">
+        <video src="showreel.mp4" muted loop playsinline preload="metadata"
+               onloadedmetadata="document.getElementById('reel').hidden=false"></video>
+        <button class="play" aria-label="Play showreel"
+                onclick="var v=this.previousElementSibling;v.paused?v.play():v.pause()"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK — real projects only, rendered from the data array below -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Selected work</span>
+        <h2>Projects</h2>
+        <p>Finished work and personal experiments, added as they're completed.</p>
+      </div>
+      <div id="work-mount"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">What I do</span>
+        <h2>Services</h2>
+      </div>
+
+      <div class="cap-list">
+        <div class="cap reveal">
+          <div class="cap-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>
+          </div>
+          <div>
+            <h3>Video Editing</h3>
+            <p>Engaging edits for advertising, social media, and digital content.</p>
+          </div>
+        </div>
+
+        <div class="cap reveal">
+          <div class="cap-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/></svg>
+          </div>
+          <div>
+            <h3>Motion Graphics</h3>
+            <p>Kinetic typography, animated graphics, and visual storytelling.</p>
+          </div>
+        </div>
+
+        <div class="cap reveal">
+          <div class="cap-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg>
+          </div>
+          <div>
+            <h3>UI &amp; Product Animation</h3>
+            <p>Polished interface animations and product-focused visuals.</p>
+          </div>
+        </div>
+
+        <div class="cap reveal">
+          <div class="cap-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M12 3a9 9 0 0 1 0 18" fill="currentColor" stroke="none" opacity=".35"/></svg>
+          </div>
+          <div>
+            <h3>Color Grading &amp; Finishing</h3>
+            <p>Color consistency, visual polish, and export preparation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">About</span>
+        <h2>Yoseph Alemayehu</h2>
+      </div>
+
+      <div class="about-grid reveal">
+        <div class="about-body">
+          <p>I'm a motion designer and video editor focused on turning ideas into clear, engaging visual stories. I create motion graphics, product-focused animations, and commercial-style edits, combining thoughtful design, smooth animation, and precise timing. I'm continually developing my craft through personal projects and experiments in motion design and programmatic video creation.</p>
+
+          <p class="tools-title">Tools</p>
+          <ul class="tools">
+            <li>Adobe After Effects 2025</li>
+            <li>Adobe Premiere Pro</li>
+            <li>DaVinci Resolve</li>
+            <li>Remotion</li>
+            <li>React &amp; TypeScript</li>
+          </ul>
+
+          <div class="about-meta">
+            <span><span class="dot">◆</span> Ethiopia</span>
+            <span><span class="dot">◆</span> Available for freelance projects</span>
+          </div>
+        </div>
+
+        <!-- Optional: drops in automatically once portrait.jpg exists -->
+        <div class="about-portrait" hidden>
+          <img src="portrait.jpg" alt="Yoseph Alemayehu"
+               onerror="this.closest('.about-portrait').hidden=true">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <div class="cta-card reveal">
+        <span class="avail">Available for freelance projects</span>
+        <h2>Let's make something move</h2>
+        <p>Tell me about the project, the deadline, and where it needs to land.</p>
+        <a href="mailto:yosephalemayehu1992@gmail.com" class="btn">
+          yosephalemayehu1992@gmail.com <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="logo" href="#top">
+        <span class="logo-mark">YA</span>
+        <span>Yoseph Alemayehu</span>
+      </a>
+      <nav class="foot-links">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.instagram.com/josi_424" target="_blank" rel="noopener">Instagram</a>
+        <a href="http://www.youtube.com/@Channel3Rankado" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.linkedin.com/in/ya1992" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+    <p class="foot-note">© 2026 Yoseph Alemayehu — Motion Designer &amp; Video Editor</p>
+  </div>
+</footer>
+
+<script>
+/* ------------------------------------------------------------------
+   PROJECTS — real, finished work only.
+   Add an object per completed project; the section renders from here.
+   Never add placeholder entries.
+
+   {
+     title:  "Project title",
+     desc:   "One-line description.",
+     tags:   ["EDIT", "MOTION"],
+     spec:   true,            // set true ONLY for independent spec concepts
+     video:  "projects/clip.mp4",   // optional silent looping preview
+     poster: "projects/thumb.jpg",  // optional still
+     href:   ""                     // optional link out
+   }
+------------------------------------------------------------------ */
+var PROJECTS = [
+  {
+    title:  "Portfolio 1: Talking head",
+    desc:   "Talking-head edit — the first piece in the portfolio series.",
+    tags:   ["VIDEO EDIT"],
+    spec:   false,
+    poster: "https://i.ytimg.com/vi/CG_8NIHmCR0/maxresdefault.jpg",
+    href:   "https://youtu.be/CG_8NIHmCR0?si=FW80mIMOtp8_T4At"
+  },
+  {
+    title:  "Portfolio 2: Yango ad",
+    desc:   "Self-directed ad concept for Yango — motion graphics and product-focused visuals.",
+    tags:   ["EDIT", "MOTION"],
+    spec:   true,
+    poster: "https://i.ytimg.com/vi/t-IjwRKi1p4/maxresdefault.jpg",
+    href:   "https://youtu.be/t-IjwRKi1p4?si=GpxCpQ9piZQ5glHo"
+  }
+];
+
+(function renderWork(){
+  var mount = document.getElementById('work-mount');
+
+  if(!PROJECTS.length){
+    mount.innerHTML =
+      '<div class="empty reveal">' +
+        '<span class="eyebrow">In progress</span>' +
+        '<h3>New work lands here soon.</h3>' +
+        '<p>Finished projects and experiments will be added as they\'re completed.</p>' +
+      '</div>';
+  } else {
+    var html = '<div class="grid-2">';
+    PROJECTS.forEach(function(p){
+      var media = '';
+      if(p.video){
+        media = '<div class="thumb"><video src="' + p.video + '"' +
+                (p.poster ? ' poster="' + p.poster + '"' : '') +
+                ' muted loop playsinline preload="metadata"></video></div>';
+      } else if(p.poster){
+        media = '<div class="thumb"><img src="' + p.poster + '" alt="' + p.title + '" loading="lazy"></div>';
+      } else {
+        media = '<div class="thumb"></div>';
+      }
+
+      var tagHtml = (p.tags || []).map(function(t){
+        return '<span class="tag">' + t + '</span>';
+      }).join('');
+      if(p.spec) tagHtml += '<span class="tag tag-spec">SPEC</span>';
+
+      // external links open in a new tab; internal anchors stay in-page
+      var isExt = /^https?:\/\//i.test(p.href || '');
+      var openAttr = isExt ? ' target="_blank" rel="noopener noreferrer"' : '';
+
+      html +=
+        '<' + (p.href ? 'a href="' + p.href + '"' + openAttr : 'div') + ' class="work-card reveal">' +
+          media +
+          '<div class="work-body">' +
+            '<h3>' + p.title + '</h3>' +
+            (p.desc ? '<p>' + p.desc + '</p>' : '') +
+            (tagHtml ? '<div class="tags">' + tagHtml + '</div>' : '') +
+          '</div>' +
+        '</' + (p.href ? 'a' : 'div') + '>';
+    });
+    html += '</div>';
+    mount.innerHTML = html;
+  }
+
+  // reveal — covers initial markup and anything just rendered
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+    });
+  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+/* Showreel: reveal the hero button only once the video is actually usable */
+(function(){
+  var v = document.querySelector('.showreel video');
+  if(!v) return;
+  v.addEventListener('loadeddata', function(){
+    var link = document.getElementById('reel-link');
+    if(link) link.hidden = false;
+  });
+  v.addEventListener('error', function(){
+    document.getElementById('reel').hidden = true;
+  });
+})();
+</script>
+
+</body>
+</html>
