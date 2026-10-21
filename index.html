@@ -343,7 +343,6 @@
       <p class="hero-sub">Motion graphics, product-focused animation, and commercial-style edits — turning ideas into clear, engaging visual stories.</p>
       <div class="hero-actions">
         <a href="#work" class="btn">View work <span class="arrow">→</span></a>
-        <a href="#reel" class="btn btn-ghost" id="reel-link" hidden>Watch showreel</a>
         <a href="#contact" class="btn btn-ghost">Get in touch</a>
       </div>
     </div>
@@ -626,14 +625,10 @@ var PROJECTS = [
   els.forEach(function(e){io.observe(e)});
 })();
 
-/* Showreel: reveal the hero button only once the video is actually usable */
+/* Showreel: keep the section hidden if the video can't load */
 (function(){
   var v = document.querySelector('.showreel video');
   if(!v) return;
-  v.addEventListener('loadeddata', function(){
-    var link = document.getElementById('reel-link');
-    if(link) link.hidden = false;
-  });
   v.addEventListener('error', function(){
     document.getElementById('reel').hidden = true;
   });
