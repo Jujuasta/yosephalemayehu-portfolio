@@ -185,6 +185,11 @@
     background:linear-gradient(135deg,var(--surface-2),#241647);
   }
   .thumb img,.thumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .thumb.v video{object-fit:contain;z-index:1}
+  .thumb.v .vbg{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;filter:blur(16px) saturate(1.25);transform:scale(1.15);
+  }
   .thumb::after{
     content:"";position:absolute;inset:0;
     background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.32));
@@ -538,6 +543,16 @@ var PROJECTS = [
     href:   "https://youtu.be/_Yf1Sk2tgAY"
   },
   {
+    title:  "News Short — Captions & Graphics",
+    desc:   "Self-directed vertical short — caption design, motion graphics and pacing for a news clip.",
+    tags:   ["EDIT", "MOTION", "SHORT"],
+    spec:   true,
+    video:   "israel-short.mp4",
+    poster:  "israel-short-poster.jpg",
+    vertical: true,
+    href:   "israel-short.mp4"
+  },
+  {
     title:  "Podcast Clip",
     desc:   "Podcast clip edit — pacing and cut-down for a conversation piece.",
     tags:   ["VIDEO EDIT"],
@@ -577,14 +592,17 @@ var PROJECTS = [
     var html = '<div class="grid-2">';
     PROJECTS.forEach(function(p){
       var media = '';
+      var tcls = 'thumb' + (p.vertical ? ' v' : '');
       if(p.video){
-        media = '<div class="thumb"><video src="' + p.video + '"' +
+        media = '<div class="' + tcls + '">' +
+                (p.vertical && p.poster ? '<img class="vbg" src="' + p.poster + '" alt="">' : '') +
+                '<video src="' + p.video + '"' +
                 (p.poster ? ' poster="' + p.poster + '"' : '') +
                 ' muted loop playsinline preload="metadata"></video></div>';
       } else if(p.poster){
-        media = '<div class="thumb"><img src="' + p.poster + '" alt="' + p.title + '" loading="lazy"></div>';
+        media = '<div class="' + tcls + '"><img src="' + p.poster + '" alt="' + p.title + '" loading="lazy"></div>';
       } else {
-        media = '<div class="thumb"></div>';
+        media = '<div class="' + tcls + '"></div>';
       }
 
       var tagHtml = (p.tags || []).map(function(t){
